@@ -1,0 +1,24 @@
+flowchart TD
+    A[Phishing Email] --> B{Initial Compromise}
+    B --> |Malware Installation| C[Exploit Vulnerabilities]
+    C --> D[Command & Control]
+    D --> E[Lateral Movement]
+    E --> F[Data Reconnaissance]
+    F --> G[Data Exfiltration]
+
+    subgraph Defender Solutions
+    O365[Defender for Office 365<br>Email & Phishing Protection]
+    Endpoint[Defender for Endpoint<br>Malware Detection & Prevention]
+    Identity[Defender for Identity<br>User & Access Protection]
+    CloudApps[Defender for Cloud Apps<br>SaaS Security Monitoring]
+    end
+
+    A --> |Blocked| O365
+    B --> |Prevented| Endpoint
+    E --> |Detected| Identity
+    G --> |Stopped| CloudApps
+
+    classDef attackStage fill:#FF6347,color:white;
+    classDef defenderSolution fill:#4682B4,color:white;
+    class A,B,C,D,E,F,G attackStage;
+    class O365,Endpoint,Identity,CloudApps defenderSolution;
